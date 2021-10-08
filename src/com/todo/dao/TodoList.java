@@ -48,7 +48,7 @@ public class TodoList {
 				if(count>0) records++;
 				pstmt.close();
 			}
-			System.out.println(records + "records read!");
+			System.out.println(records + "개의 아이템을 불러왔습니다.");
 			br.close();
 			
 		} catch (Exception e) {
@@ -127,7 +127,7 @@ public class TodoList {
 				int id = rs.getInt("id");
 				String category = rs.getString("category");
 				String title = rs.getString("title");
-				String description = rs.getString("description");
+				String description = rs.getString("memo");
 				String due_date = rs.getString("due_date");
 				String current_date = rs.getString("current_date");
 				TodoItem t = new TodoItem(title, description, category, due_date);
@@ -206,7 +206,7 @@ public class TodoList {
 	}
 
 	public Boolean isDuplicate(String title) {
-		for (TodoItem item : list) {
+		for (TodoItem item : getList()) {
 			if (title.equals(item.getTitle())) return true;
 		}
 		return false;
