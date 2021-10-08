@@ -134,11 +134,9 @@ public class TodoUtil {
 	public static void find(TodoList l, String keyword) {
 		int count = 0;
 		
-		for(TodoItem item : l.getList()) {
-			if(item.getTitle().contains(keyword) || item.getDesc().contains(keyword)) {
-				System.out.println((l.getList().indexOf(item)+1) + ". " + item.toString());
-				count++;
-			}
+		for(TodoItem item : l.getList(keyword)) {
+			System.out.println(item.toString());
+			count++;
 		}
 		System.out.println("총 " + count + "개의 항목을 찾았습니다.");
 	}

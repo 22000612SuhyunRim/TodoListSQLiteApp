@@ -46,7 +46,7 @@ public class TodoMain {
 				break;
 				
 			case "find":
-				keyword = sc.next();
+				keyword = sc.nextLine().trim();
 				TodoUtil.find(l, keyword);
 				break;
 				
