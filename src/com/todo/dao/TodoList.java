@@ -37,7 +37,7 @@ public class TodoList {
 	}
 
 	public void listAll() {
-		System.out.println("\n[ì •ë ¬ëœ ì „ì²´ ëª©ë¡, ì´" + list.size() + "ê°œ]");
+		System.out.println("\\n[Á¤·ÄµÈ ÀüÃ¼ ¸ñ·Ï, ÃÑ\" + list.size() + \"°³]\"");
 		for (TodoItem myitem : list) {
 			System.out.println((list.indexOf(myitem)+1) + ". " + myitem.toString());
 		}

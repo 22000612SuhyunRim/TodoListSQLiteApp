@@ -4,23 +4,23 @@ public class Menu {
     public static void displaymenu()
     {
         System.out.println("===================================");
-        System.out.println("<ë©”ë‰´ ì‚¬ìš©ë²•>");
-        System.out.println("1. ì•„ì´í…œ ì¶”ê°€ [add]");
-        System.out.println("2. ì•„ì´í…œ ì‚­ì œ [del]");
-        System.out.println("3. ì•„ì´í…œ ìˆ˜ì • [edit]");
-        System.out.println("4. ì•„ì´í…œ ëª©ë¡ [ls]");
-        System.out.println("5. ì¹´í…Œê³ ë¦¬ ëª©ë¡ [ls_cate]");
-        System.out.println("6. ê²€ìƒ‰ì–´ë¡œ ì•„ì´í…œ ê²€ìƒ‰ [find]");
-        System.out.println("7. ê²€ìƒ‰ì–´ë¡œ ì¹´í…Œê³ ë¦¬ ê²€ìƒ‰ [find_cate]");
-        System.out.println("8. ì•„ì´í…œ ì´ë¦„ìˆœìœ¼ë¡œ ì •ë ¬ [ls_name]");
-        System.out.println("9. ì•„ì´í…œ ì´ë¦„ì—­ìˆœìœ¼ë¡œ ì •ë ¬ [ls_name_desc]");
-        System.out.println("10. ì•„ì´í…œ ë‚ ì§œìˆœìœ¼ë¡œ ì •ë ¬ [ls_date]");
-        System.out.println("11. ì•„ì´í…œ ìµœì‹ ìˆœìœ¼ë¡œ ì •ë ¬ [ls_date_desc]");
-        System.out.println("12. ë‚˜ê°€ê¸° [exit]");
+        System.out.println("<¸Ş´º »ç¿ë¹ı>");
+        System.out.println("1. ¾ÆÀÌÅÛ Ãß°¡ [add]");
+        System.out.println("2. ¾ÆÀÌÅÛ »èÁ¦ [del]");
+        System.out.println("3. ¾ÆÀÌÅÛ ¼öÁ¤ [edit]");
+        System.out.println("4. ¾ÆÀÌÅÛ ¸ñ·Ï [ls]");
+        System.out.println("5. Ä«Å×°í¸® ¸ñ·Ï [ls_cate]");
+        System.out.println("6. °Ë»ö¾î·Î ¾ÆÀÌÅÛ °Ë»ö [find]");
+        System.out.println("7. °Ë»ö¾î·Î Ä«Å×°í¸® °Ë»ö [find_cate]");
+        System.out.println("8. ¾ÆÀÌÅÛ ÀÌ¸§¼øÀ¸·Î Á¤·Ä [ls_name]");
+        System.out.println("9. ¾ÆÀÌÅÛ ÀÌ¸§¿ª¼øÀ¸·Î Á¤·Ä [ls_name_desc]");
+        System.out.println("10. ¾ÆÀÌÅÛ ³¯Â¥¼øÀ¸·Î Á¤·Ä [ls_date]");
+        System.out.println("11. ¾ÆÀÌÅÛ ÃÖ½Å¼øÀ¸·Î Á¤·Ä [ls_date_desc]");
+        System.out.println("12. ³ª°¡±â [exit]");
         System.out.println("===================================");
     }
     
     public static void prompt() {
-    	System.out.print("\nì‚¬ìš©í•˜ì‹¤ ëª…ë ¹ì–´ë¥¼ ì…ë ¥í•´ ì£¼ì„¸ìš”. > ");
+    	System.out.print("\n»ç¿ëÇÏ½Ç ¸í·É¾î¸¦ ÀÔ·ÂÇØ ÁÖ¼¼¿ä. > ");
     }
 }

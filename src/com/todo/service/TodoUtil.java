@@ -21,48 +21,48 @@ public class TodoUtil {
 		String category, title, desc, due_date;
 		Scanner sc = new Scanner(System.in);
 		
-		System.out.print("\në¦¬ìŠ¤íŠ¸ì— ì¶”ê°€ì‹œí‚¬ ì•„ì´í…œì˜ ì œëª©ì„ ì…ë ¥í•˜ì„¸ìš”. > ");
+		System.out.print("\n¸®½ºÆ®¿¡ Ãß°¡½ÃÅ³ ¾ÆÀÌÅÛÀÇ Á¦¸ñÀ» ÀÔ·ÂÇÏ¼¼¿ä. > ");
 		title = sc.next();
 		
 		if (list.isDuplicate(title)) {
-			System.out.printf("ì´ë¯¸ ì¶”ê°€ëœ ì•„ì´í…œê³¼ ë™ì¼í•œ ì œëª©ì„ ì‚¬ìš©í•  ìˆ˜ ì—†ìŠµë‹ˆë‹¤.");
+			System.out.printf("ÀÌ¹Ì Ãß°¡µÈ ¾ÆÀÌÅÛ°ú µ¿ÀÏÇÑ Á¦¸ñÀ» »ç¿ëÇÒ ¼ö ¾ø½À´Ï´Ù.");
 			return;
 		}
 		
-		System.out.print("ì•„ì´í…œì˜ ì¹´í…Œê³ ë¦¬ë¥¼ ì…ë ¥í•˜ì„¸ìš”. > ");
+		System.out.print("¾ÆÀÌÅÛÀÇ Ä«Å×°í¸®¸¦ ÀÔ·ÂÇÏ¼¼¿ä. > ");
 		category = sc.next();
 		
-		System.out.print("ì„¤ëª…ì„ ì…ë ¥í•˜ì„¸ìš”. > ");
+		System.out.print("¼³¸íÀ» ÀÔ·ÂÇÏ¼¼¿ä. > ");
 		sc.nextLine();
 		desc = sc.nextLine();
 		
-		System.out.print("ë§ˆê°ì¼ìë¥¼ ì…ë ¥í•˜ì„¸ìš”. > ");
+		System.out.print("¸¶°¨ÀÏÀÚ¸¦ ÀÔ·ÂÇÏ¼¼¿ä. > ");
 		due_date = sc.next();
 		
 		TodoItem t = new TodoItem(title, desc, null, category, due_date);
 		list.addItem(t);
-		System.out.println("ì•„ì´í…œì´ ì¶”ê°€ë˜ì—ˆìŠµë‹ˆë‹¤!");
+		System.out.println("¾ÆÀÌÅÛÀÌ Ãß°¡µÇ¾ú½À´Ï´Ù!");
 	}
 
 	public static void deleteItem(TodoList l) {
 		
 		Scanner sc = new Scanner(System.in);
 		
-		System.out.print("\në¦¬ìŠ¤íŠ¸ì—ì„œ ì‚­ì œí•  ì•„ì´í…œì˜ ë²ˆí˜¸ë¥¼ ì…ë ¥í•˜ì„¸ìš”. > ");
+		System.out.print("\n¸®½ºÆ®¿¡¼­ »èÁ¦ÇÒ ¾ÆÀÌÅÛÀÇ ¹øÈ£¸¦ ÀÔ·ÂÇÏ¼¼¿ä. > ");
 		int index = sc.nextInt()-1;
 		
 		for (TodoItem item : l.getList()) {
 			if (l.getList().indexOf(item)==index) {
 				System.out.println((index+1) + ". " + item.toString());
-				System.out.print("ìœ„ ì•„ì´í…œì„ ì‚­ì œí•˜ì‹œê² ìŠµë‹ˆê¹Œ? (y/n) > ");
+				System.out.print("À§ ¾ÆÀÌÅÛÀ» »èÁ¦ÇÏ½Ã°Ú½À´Ï±î? (y/n) > ");
 				String select = sc.next();
 				if(select.contains("y")) {
 					l.deleteItem(item);
-					System.out.println("ì•„ì´í…œì´ ì‚­ì œë˜ì—ˆìŠµë‹ˆë‹¤!");
+					System.out.println("¾ÆÀÌÅÛÀÌ »èÁ¦µÇ¾ú½À´Ï´Ù!");
 					break;
 				}
 				else {
-					System.out.println("ì•„ì´í…œì´ ì‚­ì œë˜ì§€ ì•Šì•˜ìŠµë‹ˆë‹¤.");
+					System.out.println("¾ÆÀÌÅÛÀÌ »èÁ¦µÇÁö ¾Ê¾Ò½À´Ï´Ù.");
 					break;
 				}
 			}
@@ -73,42 +73,42 @@ public class TodoUtil {
 		
 		Scanner sc = new Scanner(System.in);
 		
-		System.out.print("\në¦¬ìŠ¤íŠ¸ì—ì„œ ìˆ˜ì •í•˜ê³  ì‹¶ì€ ì•„ì´í…œì˜ ë²ˆí˜¸ë¥¼ ì…ë ¥í•˜ì„¸ìš”. > ");
+		System.out.print("\n¸®½ºÆ®¿¡¼­ ¼öÁ¤ÇÏ°í ½ÍÀº ¾ÆÀÌÅÛÀÇ ¹øÈ£¸¦ ÀÔ·ÂÇÏ¼¼¿ä. > ");
 		int index = sc.nextInt()-1;
 		if (index>l.getList().size() || index<0) {
-			System.out.println("ë°©ê¸ˆ ì…ë ¥í•˜ì‹  ë²ˆí˜¸ëŠ” ì¡´ì¬í•˜ì§€ ì•ŠìŠµë‹ˆë‹¤.");
+			System.out.println("¹æ±İ ÀÔ·ÂÇÏ½Å ¹øÈ£´Â Á¸ÀçÇÏÁö ¾Ê½À´Ï´Ù.");
 			return;
 		}
 		
 		System.out.println((index+1) + ". " + l.getList().get(index).toString());
 		
-		System.out.print("ìƒˆë¡œìš´ ì œëª©ì„ ì…ë ¥í•˜ì„¸ìš”. > ");
+		System.out.print("»õ·Î¿î Á¦¸ñÀ» ÀÔ·ÂÇÏ¼¼¿ä. > ");
 		String new_title = sc.next().trim();
 		if (l.isDuplicate(new_title)) {
-			System.out.println("ê°™ì€ ì œëª©ìœ¼ë¡œ ë°”ê¿€ ìˆ˜ ì—†ìŠµë‹ˆë‹¤.");
+			System.out.println("°°Àº Á¦¸ñÀ¸·Î ¹Ù²Ü ¼ö ¾ø½À´Ï´Ù.");
 			return;
 		}
 		
-		System.out.print("ìƒˆë¡œìš´ ì¹´í…Œê³ ë¦¬ë¥¼ ì…ë ¥í•˜ì„¸ìš”. > ");
+		System.out.print("»õ·Î¿î Ä«Å×°í¸®¸¦ ÀÔ·ÂÇÏ¼¼¿ä. > ");
 		String category = sc.next().trim();
 		
-		System.out.print("ìƒˆë¡œìš´ ì„¤ëª…ì„ ì…ë ¥í•˜ì„¸ìš”. > ");
+		System.out.print("»õ·Î¿î ¼³¸íÀ» ÀÔ·ÂÇÏ¼¼¿ä. > ");
 		sc.nextLine();
 		String new_description = sc.nextLine().trim();
 		
-		System.out.print("ìƒˆë¡œìš´ ë§ˆê°ì¼ìë¥¼ ì…ë ¥í•˜ì„¸ìš”. > ");
+		System.out.print("»õ·Î¿î ¸¶°¨ÀÏÀÚ¸¦ ÀÔ·ÂÇÏ¼¼¿ä. > ");
 		String due_date = sc.next().trim();
 		
 		
 		l.deleteItem(l.getList().get(index));
 		TodoItem t = new TodoItem(new_title, new_description, null, category, due_date);
 		l.addItem(t);
-		System.out.println("ì•„ì´í…œì´ ìˆ˜ì •ë˜ì—ˆìŠµë‹ˆë‹¤!");
+		System.out.println("¾ÆÀÌÅÛÀÌ ¼öÁ¤µÇ¾ú½À´Ï´Ù!");
 	}
 
 	public static void listAll(TodoList l) {
 		
-		System.out.println("[ì „ì²´ ëª©ë¡, ì´ " + l.getList().size() + "ê°œ]");
+		System.out.println("[ÀüÃ¼ ¸ñ·Ï, ÃÑ " + l.getList().size() + "°³]");
 		for (TodoItem item : l.getList()) {
 			System.out.println((l.getList().indexOf(item)+1) + ". " + item.toString());
 		}
@@ -128,7 +128,7 @@ public class TodoUtil {
 			count++;
 			if(iter.hasNext()) System.out.print(" / ");
 		}
-		System.out.println("\nì´ " + count + "ê°œì˜ ì¹´í…Œê³ ë¦¬ê°€ ë“±ë¡ë˜ì–´ ìˆìŠµë‹ˆë‹¤.");
+		System.out.println("\nÃÑ " + count + "°³ÀÇ Ä«Å×°í¸®°¡ µî·ÏµÇ¾î ÀÖ½À´Ï´Ù.");
 	}
 	
 	public static void find(TodoList l, String keyword) {
@@ -140,7 +140,7 @@ public class TodoUtil {
 				count++;
 			}
 		}
-		System.out.println("ì´ " + count + "ê°œì˜ í•­ëª©ì„ ì°¾ì•˜ìŠµë‹ˆë‹¤.");
+		System.out.println("ÃÑ " + count + "°³ÀÇ Ç×¸ñÀ» Ã£¾Ò½À´Ï´Ù.");
 	}
 	
 	public static void findCate(TodoList l, String keyword) {
@@ -152,7 +152,7 @@ public class TodoUtil {
 				count++;
 			}
 		}
-		System.out.println("ì´ " + count + "ê°œì˜ í•­ëª©ì„ ì°¾ì•˜ìŠµë‹ˆë‹¤.");
+		System.out.println("ÃÑ " + count + "°³ÀÇ Ç×¸ñÀ» Ã£¾Ò½À´Ï´Ù.");
 	}
 	
 	public static void saveList(TodoList l, String filename) {
@@ -165,7 +165,7 @@ public class TodoUtil {
 				count++;
 			}
 			w.close();
-			System.out.println(count + "ê°œì˜ ì•„ì´í…œì´ \"todolist.txt\" íŒŒì¼ì— ì €ì¥ë˜ì—ˆìŠµë‹ˆë‹¤.");
+			System.out.println(count + "°³ÀÇ ¾ÆÀÌÅÛÀÌ \"todolist.txt\" ÆÄÀÏ¿¡ ÀúÀåµÇ¾ú½À´Ï´Ù.");
 			
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
@@ -194,13 +194,13 @@ public class TodoUtil {
 				
 			}
 			br.close();
-			if(count==0) System.out.println("\"todolist.txt\" íŒŒì¼ì— ì•„ì´í…œì´ ì¡´ì¬í•˜ì§€ ì•ŠìŠµë‹ˆë‹¤.");
-			else System.out.println("\"todolist.txt\" íŒŒì¼ì—ì„œ " + count + "ê°œì˜ ì•„ì´í…œì„ ì½ì–´ì™”ìŠµë‹ˆë‹¤.\n");
+			if(count==0) System.out.println("\"todolist.txt\" ÆÄÀÏ¿¡ ¾ÆÀÌÅÛÀÌ Á¸ÀçÇÏÁö ¾Ê½À´Ï´Ù.");
+			else System.out.println("\"todolist.txt\" ÆÄÀÏ¿¡¼­ " + count + "°³ÀÇ ¾ÆÀÌÅÛÀ» ÀĞ¾î¿Ô½À´Ï´Ù.\n");
 			
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
 			//e.printStackTrace();
-			System.out.println("\"todolist.txt\" íŒŒì¼ì´ ì—†ìŠµë‹ˆë‹¤.");
+			System.out.println("\"todolist.txt\" ÆÄÀÏÀÌ ¾ø½À´Ï´Ù.");
 		} catch (NumberFormatException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

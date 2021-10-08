@@ -84,7 +84,7 @@ public class TodoMain {
 				break;
 
 			default:
-				System.out.println("ë©”ë‰´ ì‚¬ìš©ë²•ì— ì íŒ ëª…ë ¹ì–´ë¥¼ ì°¸ê³ í•´ì„œ ë‹¤ì‹œ ì…ë ¥í•´ ì£¼ì„¸ìš”. [help]");
+				System.out.println("¸Ş´º »ç¿ë¹ı¿¡ ÀûÈù ¸í·É¾î¸¦ Âü°íÇØ¼­ ´Ù½Ã ÀÔ·ÂÇØ ÁÖ¼¼¿ä. [help]");
 				break;
 			}
 			
