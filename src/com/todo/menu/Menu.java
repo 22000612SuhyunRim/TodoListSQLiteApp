@@ -16,7 +16,8 @@ public class Menu {
         System.out.println("9. 아이템 이름역순으로 정렬 [ls_name_desc]");
         System.out.println("10. 아이템 날짜순으로 정렬 [ls_date]");
         System.out.println("11. 아이템 최신순으로 정렬 [ls_date_desc]");
-        System.out.println("12. 나가기 [exit]");
+        System.out.println("12. 아이템 완료하기 [comp]");
+        System.out.println("13. 나가기 [exit]");
         System.out.println("===================================");
     }
     

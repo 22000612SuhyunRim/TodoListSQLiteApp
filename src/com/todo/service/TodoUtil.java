@@ -25,7 +25,7 @@ public class TodoUtil {
 		title = sc.next();
 		
 		if (l.isDuplicate(title)) {
-			System.out.printf("이미 추가된 아이템과 동일한 제목을 사용할 수 없습니다.");
+			System.out.println("이미 추가된 아이템과 동일한 제목을 사용할 수 없습니다.");
 			return;
 		}
 		
@@ -114,19 +114,19 @@ public class TodoUtil {
 		}
 	}
 	
+	public static void listAll(TodoList l, String orderby, int ordering) {
+		System.out.println("[전체 목록, 총 " + l.getCount() + "개]");
+		for (TodoItem item : l.getOrderedList(orderby, ordering)) {
+			System.out.println(item.toString());
+		}
+	}
+	
 	public static void listCateAll(TodoList l) {
 		int count = 0;
-		HashSet<String> categorySet = new HashSet<String>();
 		
-		for(TodoItem item : l.getList()) {
-			categorySet.add(item.getCategory());
-		}
-		
-		Iterator iter = categorySet.iterator();
-		while(iter.hasNext()) {
-			System.out.print(iter.next());
+		for(String item : l.getCategories()) {
+			System.out.print(item + " ");
 			count++;
-			if(iter.hasNext()) System.out.print(" / ");
 		}
 		System.out.println("\n총 " + count + "개의 카테고리가 등록되어 있습니다.");
 	}
@@ -144,11 +144,9 @@ public class TodoUtil {
 	public static void findCate(TodoList l, String keyword) {
 		int count = 0;
 		
-		for(TodoItem item : l.getList()) {
-			if(item.getCategory().contains(keyword)) {
-				System.out.println((l.getList().indexOf(item)+1) + ". " + item.toString());
-				count++;
-			}
+		for(TodoItem item : l.getListCategory(keyword)) {
+			System.out.println(item.toString());
+			count++;
 		}
 		System.out.println("총 " + count + "개의 항목을 찾았습니다.");
 	}
@@ -189,7 +187,6 @@ public class TodoUtil {
 				
 				TodoItem t = new TodoItem(title, description, date, category, due_date);
 				l.addItem(t);
-				
 			}
 			br.close();
 			if(count==0) System.out.println("\"todolist.txt\" 파일에 아이템이 존재하지 않습니다.");

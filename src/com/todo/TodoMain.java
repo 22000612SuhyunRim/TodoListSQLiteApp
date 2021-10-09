@@ -51,29 +51,28 @@ public class TodoMain {
 				break;
 				
 			case "find_cate":
-				keyword = sc.next();
+				keyword = sc.nextLine().trim();
 				TodoUtil.findCate(l, keyword);
 				break;
 
 			case "ls_name":
-				l.sortByName();
-				isList = true;
+				System.out.println("제목순으로 정렬하였습니다.");
+				TodoUtil.listAll(l, "title", 1);
 				break;
 
 			case "ls_name_desc":
-				l.sortByName();
-				l.reverseList();
-				isList = true;
+				System.out.println("제목역순으로 정렬하였습니다.");
+				TodoUtil.listAll(l, "title", 0);
 				break;
 				
 			case "ls_date":
-				l.sortByDate();
-				isList = true;
+				System.out.println("날짜순으로 정렬하였습니다.");
+				TodoUtil.listAll(l, "due_date", 1);
 				break;
 				
 			case "ls_date_desc":
-				l.sortByDateDesc();
-				isList = true;
+				System.out.println("날짜역순으로 정렬하였습니다.");
+				TodoUtil.listAll(l, "due_date", 0);
 				break;
 				
 			case "help":
