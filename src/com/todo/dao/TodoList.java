@@ -109,6 +109,7 @@ public class TodoList {
 		try {
 			pstmt=conn.prepareStatement(sql);
 			pstmt.setInt(1, index);
+			count = pstmt.executeUpdate();
 			pstmt.close();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block

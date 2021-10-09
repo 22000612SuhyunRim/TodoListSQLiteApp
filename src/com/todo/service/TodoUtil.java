@@ -53,7 +53,7 @@ public class TodoUtil {
 		
 		for (TodoItem item : l.getList()) {
 			if (item.getId()==id) {
-				System.out.println(id + ". " + item.toString());
+				System.out.println(item.toString());
 				System.out.print("위 아이템을 삭제하시겠습니까? (y/n) > ");
 				String select = sc.next();
 				if(select.contains("y")) {
@@ -81,7 +81,7 @@ public class TodoUtil {
 		}*/
 		for (TodoItem item : l.getList()) {
 			if (item.getId()==id) 
-				System.out.println(id + ". " + item.toString());
+				System.out.println(item.toString());
 		}
 		
 		System.out.print("새로운 제목을 입력하세요. > ");
@@ -162,7 +162,7 @@ public class TodoUtil {
 		int count = 0;
 		
 		for(TodoItem item : l.getList(number)) {
-			System.out.print(item.toString());
+			System.out.println(item.toString());
 			count++;
 		}
 		System.out.println("\n총 " + count + "개의 항목이 완료되었습니다.");
