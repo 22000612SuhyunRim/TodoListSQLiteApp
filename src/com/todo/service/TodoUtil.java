@@ -49,15 +49,15 @@ public class TodoUtil {
 		Scanner sc = new Scanner(System.in);
 		
 		System.out.print("\n리스트에서 삭제할 아이템의 번호를 입력하세요. > ");
-		int index = sc.nextInt()-1;
+		int id = sc.nextInt();
 		
 		for (TodoItem item : l.getList()) {
-			if (l.getList().indexOf(item)==index) {
-				System.out.println((index+1) + ". " + item.toString());
+			if (item.getId()==id) {
+				System.out.println(id + ". " + item.toString());
 				System.out.print("위 아이템을 삭제하시겠습니까? (y/n) > ");
 				String select = sc.next();
 				if(select.contains("y")) {
-					if(l.deleteItem(index) > 0)
+					if(l.deleteItem(id) > 0)
 						System.out.println("아이템이 삭제되었습니다!");
 					break;
 				}
@@ -74,13 +74,15 @@ public class TodoUtil {
 		Scanner sc = new Scanner(System.in);
 		
 		System.out.print("\n리스트에서 수정하고 싶은 아이템의 번호를 입력하세요. > ");
-		int index = sc.nextInt()-1;
-		if (index>l.getList().size() || index<0) {
+		int id = sc.nextInt();
+		/*if (l.getList().) {
 			System.out.println("방금 입력하신 번호는 존재하지 않습니다.");
 			return;
+		}*/
+		for (TodoItem item : l.getList()) {
+			if (item.getId()==id) 
+				System.out.println(id + ". " + item.toString());
 		}
-		
-		System.out.println((index+1) + ". " + l.getList().get(index).toString());
 		
 		System.out.print("새로운 제목을 입력하세요. > ");
 		String new_title = sc.next().trim();
@@ -101,7 +103,7 @@ public class TodoUtil {
 		
 		
 		TodoItem t = new TodoItem(new_title, new_description, category, due_date);
-		t.setId(index);
+		t.setId(id);
 		if(l.updateItem(t) > 0)
 			System.out.println("아이템이 수정되었습니다!");
 	}

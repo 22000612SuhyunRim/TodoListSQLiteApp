@@ -104,9 +104,9 @@ public class TodoItem {
 	public String toString() {
 		String line = "";
 		if(is_completed==0)
-			line = "[" + category + "] " + title + " - " + desc + " - " + due_date + " - " + current_date;
+			line = id + " " + "[" + category + "] " + title + " - " + desc + " - " + due_date + " - " + current_date;
 		else if(is_completed==1)
-			line = "[" + category + "] [V] " + title + " - " + desc + " - " + due_date + " - " + current_date;
+			line = id + " " + "[" + category + "] [V] " + title + " - " + desc + " - " + due_date + " - " + current_date;
 		return line;
 	}
 	
