@@ -26,7 +26,7 @@ public class TodoList {
 		try {
 			BufferedReader br = new BufferedReader(new FileReader(filename));
 			String line;
-			String sql = ("insert into list (title, memo, category, current_date, due_date)" + "values (?, ?, ?, ?, ?);");
+			String sql = ("insert into list (title, memo, category, current_date, due_date, is_completed)" + "values (?, ?, ?, ?, ?, ?);");
 			
 			int records = 0;
 			while((line=br.readLine())!=null) {
@@ -36,6 +36,7 @@ public class TodoList {
 				String description = st.nextToken();
 				String due_date = st.nextToken();
 				String current_date = st.nextToken();
+				int is_completed = Integer.parseInt(st.nextToken());
 				
 				PreparedStatement pstmt = conn.prepareStatement(sql);
 				pstmt.setString(1, title);
@@ -43,6 +44,7 @@ public class TodoList {
 				pstmt.setString(3, category);
 				pstmt.setString(4, current_date);
 				pstmt.setString(5, due_date);
+				pstmt.setInt(6, is_completed);
 				
 				int count = pstmt.executeUpdate();
 				if(count>0) records++;
@@ -115,6 +117,53 @@ public class TodoList {
 		return count;
 	}
 	
+	public int completeItem(int number) {
+		int count=0;
+		
+		String sql = "update list set is_completed=1 " + "where id = ?;";
+		PreparedStatement pstmt;
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, number);
+			count=pstmt.executeUpdate();
+			pstmt.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return count;
+	}
+	
+	public ArrayList<TodoItem> getList(int number) {
+		ArrayList<TodoItem> list = new ArrayList<TodoItem>();
+		Statement stmt;
+		try {
+			stmt=conn.createStatement();
+			String sql = "SELECT * FROM list where is_completed=1;";
+			ResultSet rs = stmt.executeQuery(sql);
+			while(rs.next()) {
+				int id = rs.getInt("id");
+				String category = rs.getString("category");
+				String title = rs.getString("title");
+				String description = rs.getString("memo");
+				String due_date = rs.getString("due_date");
+				String current_date = rs.getString("current_date");
+				int is_completed = rs.getInt("is_completed");
+				TodoItem t = new TodoItem(title, description, category, due_date);
+				t.setId(id);
+				t.setCurrent_date(current_date);
+				t.setIs_completed(is_completed);
+				list.add(t);
+			}
+			stmt.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return list;
+	}
+	
 	public ArrayList<TodoItem> getList() {
 		ArrayList<TodoItem> list = new ArrayList<TodoItem>();
 		Statement stmt;
@@ -130,9 +179,11 @@ public class TodoList {
 				String description = rs.getString("memo");
 				String due_date = rs.getString("due_date");
 				String current_date = rs.getString("current_date");
+				int is_completed = rs.getInt("is_completed");
 				TodoItem t = new TodoItem(title, description, category, due_date);
 				t.setId(id);
 				t.setCurrent_date(current_date);
+				t.setIs_completed(is_completed);
 				list.add(t);
 			}
 			stmt.close();

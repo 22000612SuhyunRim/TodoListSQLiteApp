@@ -74,7 +74,17 @@ public class TodoMain {
 				System.out.println("날짜역순으로 정렬하였습니다.");
 				TodoUtil.listAll(l, "due_date", 0);
 				break;
-				
+			
+			case "comp":
+				int number = sc.nextInt();
+				TodoUtil.completeItem(l, number);
+				break;
+					
+			case "ls_comp":
+				System.out.println("완료된 아이템(들)을 정렬하였습니다.");
+				TodoUtil.listAll(l, 1);
+				break;	
+			
 			case "help":
 				Menu.displaymenu();
 				break;

@@ -151,6 +151,21 @@ public class TodoUtil {
 		System.out.println("총 " + count + "개의 항목을 찾았습니다.");
 	}
 	
+	public static void completeItem(TodoList l, int number) {
+		if(l.completeItem(number) > 0)
+			System.out.println("해당 항목 완료 체크하였습니다.");
+	}
+	
+	public static void listAll(TodoList l, int number) {
+		int count = 0;
+		
+		for(TodoItem item : l.getList(number)) {
+			System.out.print(item.toString());
+			count++;
+		}
+		System.out.println("\n총 " + count + "개의 항목이 완료되었습니다.");
+	}
+	
 	public static void saveList(TodoList l, String filename) {
 		int count = 0;
 		
