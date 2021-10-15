@@ -49,6 +49,59 @@ public class TodoUtil {
 		if(l.addItem(t)>0)
 			System.out.println("아이템이 추가되었습니다!");
 	}
+	
+	public static void createWeeklyItem(TodoList l) {
+		String category, title, desc, due_date, expected_time, difficulty;
+		String[] ymd;
+		int month=0;
+		int date=0;
+		int count=0;
+		int days=0;
+		
+		Scanner sc = new Scanner(System.in);		
+		
+		System.out.print("\n리스트에 추가시킬 아이템의 제목을 입력하세요. > ");
+		title = sc.next();
+		
+		if (l.isDuplicate(title)) {
+			System.out.println("이미 추가된 아이템과 동일한 제목을 사용할 수 없습니다.");
+			return;
+		}
+		
+		System.out.print("아이템의 카테고리를 입력하세요. > ");
+		category = sc.next();
+		
+		System.out.print("설명을 입력하세요. > ");
+		sc.nextLine();
+		desc = sc.nextLine().trim();
+		
+		System.out.print("이번주 기준 마감일자를 입력하세요. > ");
+		due_date = sc.nextLine().trim();
+				
+		System.out.print("예상 소요시간을 입력하세요. > ");
+		expected_time = sc.nextLine().trim();
+		
+		System.out.print("아이템의 난의도를 입력하세요. > ");
+		difficulty = sc.next().trim();
+		
+		//날짜 계산
+		ymd = due_date.split("/");
+		month = Integer.parseInt(ymd[1]);
+		date = Integer.parseInt(ymd[2]);
+		
+		days = l.checkDays(month);
+		
+		for(int i=0;i<5;i++) {
+			TodoItem t = new TodoItem(title, desc, null, category, due_date, expected_time, difficulty);
+			l.addItem(t);
+			date = date + 7;
+			count++;
+			if(date>days) break;
+			else due_date = ymd[0] + "/" + ymd[1] + "/" + Integer.toString(date);
+		}
+
+		System.out.printf("아이템이 이번달(%d월) 기준 %d번 추가되었습니다!", month, count); 
+	}
 
 	public static void deleteItem(TodoList l) {
 		

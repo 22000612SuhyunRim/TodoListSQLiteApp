@@ -27,6 +27,10 @@ public class TodoMain {
 			case "add":
 				TodoUtil.createItem(l);
 				break;
+				
+			case "add_week":
+				TodoUtil.createWeeklyItem(l);
+				break;
 			
 			case "del":
 				TodoUtil.deleteItem(l);
