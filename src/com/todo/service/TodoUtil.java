@@ -18,7 +18,7 @@ public class TodoUtil {
 	
 	public static void createItem(TodoList l) {
 		
-		String category, title, desc, due_date;
+		String category, title, desc, due_date, expected_time, difficulty;
 		Scanner sc = new Scanner(System.in);
 		
 		System.out.print("\n리스트에 추가시킬 아이템의 제목을 입력하세요. > ");
@@ -34,12 +34,18 @@ public class TodoUtil {
 		
 		System.out.print("설명을 입력하세요. > ");
 		sc.nextLine();
-		desc = sc.nextLine();
+		desc = sc.nextLine().trim();
 		
 		System.out.print("마감일자를 입력하세요. > ");
-		due_date = sc.next();
+		due_date = sc.nextLine().trim();
 		
-		TodoItem t = new TodoItem(title, desc, null, category, due_date);
+		System.out.print("예상 소요시간을 입력하세요. > ");
+		expected_time = sc.nextLine().trim();
+		
+		System.out.print("아이템의 난의도를 입력하세요. > ");
+		difficulty = sc.next();
+		
+		TodoItem t = new TodoItem(title, desc, null, category, due_date, expected_time, difficulty);
 		if(l.addItem(t)>0)
 			System.out.println("아이템이 추가되었습니다!");
 	}
@@ -68,6 +74,28 @@ public class TodoUtil {
 			}
 		}
 	}
+	
+	public static void deleteMultiItem(TodoList l) {
+		int number;
+		String itemNum;
+		String[] itemNums;
+		int count=0;
+		
+		Scanner sc = new Scanner(System.in);
+		
+		System.out.print("\n삭제할 아이템의 개수를 입력하세요. > ");
+		number = sc.nextInt();
+		
+		System.out.print("삭제할 아이템들의 번호들을 차례대로 입력해주세요. (e.g. 1,3,11) > ");
+		itemNum = sc.next();
+		itemNums = itemNum.split(",", number);
+		
+		for(int i=0;i<number;i++) {
+			if(l.deleteItem(Integer.parseInt(itemNums[i]))>0) count++;
+		}
+		if(count==number) System.out.println("해당 아이템들을 모두 정상적으로 삭제하였습니다!");
+		else System.out.println("삭제되지 않은 항목이 있습니다. 확인해주세요.");
+	}
 
 	public static void updateItem(TodoList l) {
 		
@@ -75,10 +103,7 @@ public class TodoUtil {
 		
 		System.out.print("\n리스트에서 수정하고 싶은 아이템의 번호를 입력하세요. > ");
 		int id = sc.nextInt();
-		/*if (l.getList().) {
-			System.out.println("방금 입력하신 번호는 존재하지 않습니다.");
-			return;
-		}*/
+		
 		for (TodoItem item : l.getList()) {
 			if (item.getId()==id) 
 				System.out.println(item.toString());
@@ -99,10 +124,16 @@ public class TodoUtil {
 		String new_description = sc.nextLine().trim();
 		
 		System.out.print("새로운 마감일자를 입력하세요. > ");
-		String due_date = sc.next().trim();
+		String due_date = sc.nextLine().trim();
+		
+		System.out.print("새로운 예상 소요시간을 입력하세요. > ");
+		String expected_time = sc.nextLine().trim();
+		
+		System.out.print("새로운 난의도를 입력하세요. > ");
+		String difficulty = sc.next().trim();
 		
 		
-		TodoItem t = new TodoItem(new_title, new_description, category, due_date);
+		TodoItem t = new TodoItem(new_title, new_description, category, due_date, expected_time, difficulty);
 		t.setId(id);
 		if(l.updateItem(t) > 0)
 			System.out.println("아이템이 수정되었습니다!");
@@ -158,6 +189,27 @@ public class TodoUtil {
 			System.out.println("해당 항목 완료 체크하였습니다.");
 	}
 	
+	public static void completeMultiItem(TodoList l) {
+		int count=0;
+		int number;
+		String itemNum;
+		String[] itemNums;
+		
+		Scanner sc = new Scanner(System.in);
+		
+		System.out.print("완료 체크 할 아이템의 개수를 입력하세요. > ");
+		number = sc.nextInt();
+		System.out.print("완료 체크 할 아이템들의 번호들 차례대로 입려하세요. (e.g. 1,3,11) > ");
+		itemNum = sc.next();
+		itemNums = itemNum.split(",",number);
+		
+		for(int i=0;i<number;i++) {
+			if(l.completeItem(Integer.parseInt(itemNums[i]))>0) count++;
+		}
+		if(count==number) System.out.println("해당 아이템들을 모두 정상적으로 완료 체크 하였습니다.");
+		else System.out.println("완료 체크 되지 않은 항목이 있습니다. 확인해주세요.");
+	}
+	
 	public static void listAll(TodoList l, int number) {
 		int count = 0;
 		
@@ -186,7 +238,7 @@ public class TodoUtil {
 		}
 	}
 	
-	public static void loadList(TodoList l, String filename) {
+	/*public static void loadList(TodoList l, String filename) {
 		int count = 0;
 		
 		try {
@@ -220,5 +272,5 @@ public class TodoUtil {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-	}
+	}*/
 }

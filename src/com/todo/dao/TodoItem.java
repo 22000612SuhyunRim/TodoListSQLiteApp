@@ -11,9 +11,11 @@ public class TodoItem {
     private String category;
     private String due_date;
     private int is_completed;
+    private String expected_time;
+    private String difficulty;
 
 
-    public TodoItem(String title, String desc, String current_date, String category, String due_date){
+    public TodoItem(String title, String desc, String current_date, String category, String due_date, String expected_time, String difficulty){
         this.title = title;
         this.desc = desc;
         if(current_date == null) {
@@ -23,18 +25,22 @@ public class TodoItem {
         else this.current_date = current_date;
         this.category = category;
         this.due_date = due_date;
+        this.expected_time = expected_time;
+        this.difficulty = difficulty;
     }
     
-    public TodoItem(String title, String desc, String category, String due_date){
+    public TodoItem(String title, String desc, String category, String due_date, String expected_time, String difficulty){
         this.title = title;
         this.desc = desc;
         this.category = category;
         this.due_date = due_date;
 	    SimpleDateFormat f = new SimpleDateFormat("yyyy/MM/dd kk:mm:ss");
 	    this.current_date = f.format(new Date());
+	    this.expected_time = expected_time;
+	    this.difficulty = difficulty;
     }
     
-    public TodoItem(int id, String title, String desc, String category, String due_date, String current_date, int is_completed) {
+    public TodoItem(int id, String title, String desc, String category, String due_date, String current_date, int is_completed, String expected_time, String difficulty) {
     	this.id = id;
     	this.title = title;
     	this.desc = desc;
@@ -42,6 +48,8 @@ public class TodoItem {
     	this.due_date = due_date;
     	this.current_date = current_date;
     	this.is_completed = is_completed;
+    	this.expected_time = expected_time;
+    	this.difficulty = difficulty;
     }
     
     public int getId() {
@@ -100,18 +108,34 @@ public class TodoItem {
 		this.is_completed = is_completed;
 	}
 
+	public String getExpected_time() {
+		return expected_time;
+	}
+
+	public void setExpected_time(String expected_time) {
+		this.expected_time = expected_time;
+	}
+
+	public String getDifficulty() {
+		return difficulty;
+	}
+
+	public void setDifficulty(String difficulty) {
+		this.difficulty = difficulty;
+	}
+
 	@Override
 	public String toString() {
 		String line = "";
 		if(is_completed==0)
-			line = id + " " + "[" + category + "] " + title + " - " + desc + " - " + due_date + " - " + current_date;
+			line = id + " " + "[" + category + "] " + title + " - " + desc + " - " + due_date + " - " + expected_time + " - " + difficulty + " - " + current_date;
 		else if(is_completed==1)
-			line = id + " " + "[" + category + "] [V] " + title + " - " + desc + " - " + due_date + " - " + current_date;
+			line = id + " " + "[" + category + "] [V] " + title + " - " + desc + " - " + due_date + " - " + expected_time + " - " + difficulty + " - " + current_date;
 		return line;
 	}
 	
 	public String toSaveString() {
-		return category + "##" + title + "##" + desc + "##" + due_date + "##" + current_date + "##" + is_completed + "\n";
+		return category + "##" + title + "##" + desc + "##" + due_date + "##" + current_date + "##" + is_completed+ "##" + expected_time + "##" + difficulty + "\n";
 	}
     
 }

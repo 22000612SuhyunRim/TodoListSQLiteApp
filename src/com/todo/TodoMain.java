@@ -12,10 +12,9 @@ public class TodoMain {
 	
 		Scanner sc = new Scanner(System.in);
 		TodoList l = new TodoList();
-		l.importDate("todolist.txt");
+		l.importData("todolist.txt");
 		boolean isList = false;
 		boolean quit = false;
-		//TodoUtil.loadList(l, "todolist.txt");
 		String keyword;
 		
 		Menu.displaymenu();
@@ -31,6 +30,10 @@ public class TodoMain {
 			
 			case "del":
 				TodoUtil.deleteItem(l);
+				break;
+				
+			case "del_multi":
+				TodoUtil.deleteMultiItem(l);
 				break;
 				
 			case "edit":
@@ -79,7 +82,11 @@ public class TodoMain {
 				int number = sc.nextInt();
 				TodoUtil.completeItem(l, number);
 				break;
-					
+				
+			case "comp_multi":
+				TodoUtil.completeMultiItem(l);
+				break;
+				
 			case "ls_comp":
 				System.out.println("완료된 아이템(들)을 정렬하였습니다.");
 				TodoUtil.listAll(l, 1);
