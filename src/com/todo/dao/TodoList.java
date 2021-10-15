@@ -252,11 +252,13 @@ public class TodoList {
 				String description = rs.getString("memo");
 				String due_date = rs.getString("due_date");
 				String current_date = rs.getString("current_date");
+				int is_completed = rs.getInt("is_completed");
 				String expected_time = rs.getString("expected_time");
 				String difficulty = rs.getString("difficulty");
 				TodoItem t = new TodoItem(title, description, category, due_date, expected_time, difficulty);
 				t.setId(id);
 				t.setCurrent_date(current_date);
+				t.setIs_completed(is_completed);
 				list.add(t);
 			}
 			pstmt.close();
@@ -299,11 +301,13 @@ public class TodoList {
 				String description = rs.getString("memo");
 				String due_date = rs.getString("due_date");
 				String current_date = rs.getString("current_date");
+				int is_completed = rs.getInt("is_completed");
 				String expected_time = rs.getString("expected_time");
 				String difficulty = rs.getString("difficulty");
 				TodoItem t = new TodoItem(title, description, category, due_date, expected_time, difficulty);
 				t.setId(id);
 				t.setCurrent_date(current_date);
+				t.setIs_completed(is_completed);
 				list.add(t);
 			}
 			pstmt.close();
@@ -331,11 +335,13 @@ public class TodoList {
 				String description = rs.getString("memo");
 				String due_date = rs.getString("due_date");
 				String current_date = rs.getString("current_date");
+				int is_completed = rs.getInt("is_completed");
 				String expected_time = rs.getString("expected_time");
 				String difficulty = rs.getString("difficulty");
 				TodoItem t = new TodoItem(title, description, category, due_date, expected_time, difficulty);
 				t.setId(id);
 				t.setCurrent_date(current_date);
+				t.setIs_completed(is_completed);
 				list.add(t);
 			}
 			stmt.close();
