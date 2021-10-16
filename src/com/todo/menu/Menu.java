@@ -16,8 +16,8 @@ public class Menu {
         System.out.println("9. 검색어로 카테고리 검색 [find_cate]");
         System.out.println("10. 아이템 이름순으로 정렬 [ls_name]");
         System.out.println("11. 아이템 이름역순으로 정렬 [ls_name_desc]");
-        System.out.println("12. 아이템 날짜순으로 정렬 [ls_date]");
-        System.out.println("13. 아이템 최신순으로 정렬 [ls_date_desc]");
+        System.out.println("12. 아이템 마감날짜순으로 정렬 [ls_date]");
+        System.out.println("13. 아이템 마감날짜역순으로 정렬 [ls_date_desc]");
         System.out.println("14. 아이템 완료하기 [comp]");
         System.out.println("15. 아이템 동시 완료하기 [comp_multi]");
         System.out.println("16. 완료된 아이템 정렬 [ls_comp]");

@@ -73,12 +73,12 @@ public class TodoMain {
 				break;
 				
 			case "ls_date":
-				System.out.println("날짜순으로 정렬하였습니다.");
+				System.out.println("마감날짜순으로 정렬하였습니다.");
 				TodoUtil.listAll(l, "due_date", 1);
 				break;
 				
 			case "ls_date_desc":
-				System.out.println("날짜역순으로 정렬하였습니다.");
+				System.out.println("마감날짜역순으로 정렬하였습니다.");
 				TodoUtil.listAll(l, "due_date", 0);
 				break;
 			
